@@ -6,7 +6,7 @@
 
 Бот использует следующие модули:
 - `yt_dlp` — для загрузки видео с TikTok.
-- `python-telegram-bot, aiogram` — для взаимодействия с Telegram API.
+- `telegram, aiogram` — для взаимодействия с Telegram API.
 
 ## Недочеты
 

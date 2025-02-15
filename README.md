@@ -5,9 +5,8 @@
 ## Описание
 
 Бот использует следующие модули:
-- `time` — для работы с временными метками.
 - `yt_dlp` — для загрузки видео с TikTok.
-- `telegram, aiogram` — для взаимодействия с Telegram API.
+- `python-telegram-bot, aiogram` — для взаимодействия с Telegram API.
 
 ## Недочеты
 

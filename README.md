@@ -1,6 +1,6 @@
 # TikTok Video Downloader Bot
 
-![Bot Image](https://modkit.ct.ws/botimage.jpg?i=2)
+[Bot Image](https://modkit.ct.ws/botimage.jpg?i=2)
 
 Данный бот позволяет скачивать видео с TikTok прямо в личные сообщения Telegram. Просто отправьте ссылку на видео, и бот вернет вам файл.
 

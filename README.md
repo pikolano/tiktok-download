@@ -1,7 +1,5 @@
 # TikTok Video Downloader in Private Chat
 
-[Bot Image](botimage.jpg)
-
 Данный бот позволяет скачивать видео с TikTok прямо в личные сообщения Telegram.
 
 ## Описание

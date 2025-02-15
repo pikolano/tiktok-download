@@ -2,12 +2,13 @@ import os
 import yt_dlp
 import asyncio
 import time
-from telegram import Update, InlineQueryResultVideo
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes, InlineQueryHandler
+from telegram import InlineQueryResultVideo
+from telegram.ext import Application, CommandHandler, InlineQueryHandler, CallbackContext
+from telegram import Update
 
-TOKEN = 'TOKEN'
+TOKEN = 'YOUR_BOT_TOKEN'
 
-async def inline_query(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def inline_query(update: Update, context: CallbackContext):
     query = update.inline_query.query.strip()
 
     if not query or not ('tiktok.com' in query or 'vm.tiktok.com' in query):
@@ -25,10 +26,10 @@ async def inline_query(update: Update, context: ContextTypes.DEFAULT_TYPE):
             
             result = InlineQueryResultVideo(
                 id=str(time.time()),
-                video_url=sent_video.video.file_id,  
+                video_url=sent_video.video.file_id,
                 mime_type="video/mp4",
-                thumbnail_url="https://modkit.ct.ws/botimage.jpg?i=2", 
-                title="Держи свое видео!"
+                thumbnail_url="https://modkit.ct.ws/botimage.jpg?i=2",
+                title="Держи свое видео!" 
             )
             await update.inline_query.answer([result], cache_time=0)
             os.remove(video_path)
@@ -38,7 +39,7 @@ async def inline_query(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def download_video(url: str) -> str:
     ydl_opts = {
-        'format': 'best[ext=mp4]',  
+        'format': 'best[ext=mp4]', 
         'outtmpl': 'video.mp4',     
         'noplaylist': True,         
         'quiet': True,              
@@ -53,10 +54,11 @@ def download_video(url: str) -> str:
         print(f'Ошибка загрузки: {e}')
         return None
 
-
 def main():
-    app = ApplicationBuilder().token(TOKEN).build()
-    app.add_handler(InlineQueryHandler(inline_query))  
+    app = Application.builder().token(TOKEN).build()
+
+    app.add_handler(InlineQueryHandler(inline_query))
+
     app.run_polling()
 
 if __name__ == '__main__':
